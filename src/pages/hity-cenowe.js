@@ -6,25 +6,22 @@ import Seo from "../components/seo";
 const Hits = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Pobieranie wszystkich plików JSON z katalogu "promotions"
   const data = useStaticQuery(graphql`
     query {
-      allFile(filter: { sourceInstanceName: { eq: "promotions" }, extension: { eq: "json" } }) {
+      allPromotionsJson {
         nodes {
-          childDataJson {
-            id
-            title
-            price
-            image
-            inPopup
-          }
+          id
+          title
+          price
+          image
+          inPopup
         }
       }
     }
   `);
 
   // Łączenie danych z wszystkich plików JSON
-  const promotions = data.allFile.nodes.map(node => node.childDataJson);
+  const promotions = data.allPromotionsJson.nodes;
 
   // Filtracja promocji, które są wyświetlane w popupie
   const popupPromotions = promotions.filter(promo => promo.inPopup);

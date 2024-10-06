@@ -41,8 +41,7 @@ import materialy from '/static/images/materialy.webp'
 import Popup from "../components/popup"
 
 
-const Oferta = ({ data }) => {
-  const { title, description } = data.markdownRemark.frontmatter
+const Oferta = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeIndex, setActiveIndex] = useState(1)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -96,9 +95,9 @@ const Oferta = ({ data }) => {
 
       <div className={isMenuOpen ? "blurred" : ""} id="offers">
       <Popup />
-        <h2>{title}</h2>
+        <h2>Oferta</h2>
         <p className="underh2offers">
-        {description}
+        Oferujemy szeroką gamę materiałów budowlanych.
         </p>
         <div className="offers-boxes-row">
           <div className="offers-box">
@@ -406,16 +405,5 @@ const Oferta = ({ data }) => {
     </div>
   )
 }
-
-export const query = graphql`
-  query {
-    markdownRemark(fileAbsolutePath: { regex: "/src/data/oferta/oferta.md/" }) {
-      frontmatter {
-        title
-        description
-      }
-    }
-  }
-`
 
 export default Oferta
