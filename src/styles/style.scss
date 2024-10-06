@@ -1896,3 +1896,21 @@ main {
     margin-left: 0 !important;
   }
 }
+
+/* Styl dla sekcji z promocjami */
+.promo-img-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Odstęp między elementami */
+}
+
+.promo-one {
+  flex: 1 1 calc(50% - 20px); /* Do 1024px będą po dwa elementy w rzędzie */
+  box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+  .promo-one {
+    flex: 1 1 calc(25% - 20px); /* Od 1024px będą cztery elementy w rzędzie */
+  }
+}

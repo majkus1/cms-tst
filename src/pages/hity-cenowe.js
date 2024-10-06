@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { graphql, useStaticQuery } from "gatsby";
-import Header from "../components/header";
-import Seo from "../components/seo";
+import React, { useState } from "react"
+import { graphql, useStaticQuery } from "gatsby"
+import Header from "../components/header"
+import Seo from "../components/seo"
 import { Link } from "gatsby"
 
 const Hits = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   // Pobieranie wszystkich plików JSON z katalogu "promotions"
   const data = useStaticQuery(graphql`
@@ -20,17 +20,20 @@ const Hits = () => {
         }
       }
     }
-  `);
+  `)
 
   // Promocje: pierwsze 4 (te z popupa) i dodatkowe promocje
-  const allPromotions = data.allPromotionsJson.nodes;
-  const popupPromotions = allPromotions.slice(0, 4); // Pierwsze 4 promocje dla popupa i strony "Hity cenowe"
-  const additionalPromotions = allPromotions.slice(4); // Pozostałe promocje, które trafiają tylko na stronę "Hity cenowe"
+  const allPromotions = data.allPromotionsJson.nodes
+  const popupPromotions = allPromotions.slice(0, 4) // Pierwsze 4 promocje dla popupa i strony "Hity cenowe"
+  const additionalPromotions = allPromotions.slice(4) // Pozostałe promocje, które trafiają tylko na stronę "Hity cenowe"
 
   return (
     <div className="wrapper">
-      <Seo title="Ceramika Białystok - Hity cenowe" description="Najlepsze promocje w Białymstoku" />
-      <Header onMenuToggle={(isOpen) => setIsMenuOpen(isOpen)} />
+      <Seo
+        title="Ceramika Białystok - Hity cenowe"
+        description="Najlepsze promocje w Białymstoku"
+      />
+      <Header onMenuToggle={isOpen => setIsMenuOpen(isOpen)} />
 
       <section className={isMenuOpen ? "blurred" : ""} id="hits">
         <h3>HITY CENOWE</h3>
@@ -39,25 +42,35 @@ const Hits = () => {
           Zakup i rezerwacja <a href="tel:+48857474947">tel: 85 74 74 947</a>
         </p>
 
-        {/* Promocje z popupa (maksymalnie 4) */}
+        {/* Promocje */}
         <div className="promo-boxes">
           <div className="promo-img-boxes">
-            {popupPromotions.map((promo) => (
+            {popupPromotions.map(promo => (
               <div key={promo.id} className="promo-one">
-                <img src={promo.image} className="promo-img" alt={promo.title} />
+                <img
+                  src={promo.image}
+                  className="promo-img"
+                  alt={promo.title}
+                />
                 <p>{promo.title}</p>
                 <p>{promo.price}</p>
               </div>
             ))}
           </div>
+        </div>
 
-          <hr></hr>
+        <hr />
 
-          {/* Pozostałe promocje, które pojawiają się tylko na stronie */}
+        {/* Pozostałe promocje */}
+        <div className="promo-boxes">
           <div className="promo-img-boxes">
-            {additionalPromotions.map((promo) => (
+            {additionalPromotions.map(promo => (
               <div key={promo.id} className="promo-one">
-                <img src={promo.image} className="promo-img" alt={promo.title} />
+                <img
+                  src={promo.image}
+                  className="promo-img"
+                  alt={promo.title}
+                />
                 <p>{promo.title}</p>
                 <p>{promo.price}</p>
               </div>
@@ -66,7 +79,9 @@ const Hits = () => {
         </div>
       </section>
 
-      <section className={`${isMenuOpen ? "blurred contactmaps" : "contactmaps"}`}>
+      <section
+        className={`${isMenuOpen ? "blurred contactmaps" : "contactmaps"}`}
+      >
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38298.791121565555!2d23.138007774676755!3d53.13398941076129!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ffedad7d8a0fb%3A0xadd01a635f0ed3b3!2sCERAMIKA%20HMB%20-%20Ceg%C5%82y%20klinkierowe!5e0!3m2!1spl!2spl!4v1720721145919!5m2!1spl!2spl"
           height="400"
@@ -110,7 +125,7 @@ const Hits = () => {
         </div>
       </section>
     </div>
-  );
-};
+  )
+}
 
-export default Hits;
+export default Hits
