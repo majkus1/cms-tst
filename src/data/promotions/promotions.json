@@ -1,0 +1,16 @@
+[
+    {
+      "id": 1,
+      "title": "BRISBANE DRĄŻONA WDF22 215x100x65mm",
+      "price": "3,80 zł/szt",
+      "image": "/static/images/promo11.webp",
+      "inPopup": true
+    },
+    {
+      "id": 2,
+      "title": "GRANITY PEŁNA VNF64 240x115x71mm",
+      "price": "6,40 zł/szt",
+      "image": "/static/images/promo22.webp",
+      "inPopup": true
+    }
+]
