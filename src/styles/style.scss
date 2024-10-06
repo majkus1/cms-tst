@@ -1235,14 +1235,15 @@ main {
         display: block;
       }
       .promo-one {
-        width: 150px;
+        // width: 150px;
+        max-width: 150px;
         p {
           margin-bottom: 5px;
           font-family: "Inter", sans-serif;
           text-align: center;
         }
         img {
-          width: 150px;
+          // width: 150px;
           height: auto;
           margin-bottom: 5px;
         }
@@ -1276,6 +1277,7 @@ main {
         gap: 100px;
         .promo-one {
           width: 200px;
+          max-width: 200px;
           img {
             width: 200px;
             max-width: 200px;
