@@ -1899,20 +1899,19 @@ main {
   }
 }
 
-/* Styl dla sekcji z promocjami */
 .promo-img-boxes {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* Odstęp między elementami */
+  gap: 20px;
 }
 
 .promo-one {
-  flex: 1 1 calc(50% - 20px); /* Do 1024px będą po dwa elementy w rzędzie */
-  box-sizing: border-box;
+  flex: 1 1 calc(50% - 20px); /* 2 elementy w rzędzie do 1024px */
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1130px) {
   .promo-one {
-    flex: 1 1 calc(25% - 20px); /* Od 1024px będą cztery elementy w rzędzie */
+    flex: 1 1 calc(25% - 20px); /* 4 elementy w rzędzie powyżej 1024px */
   }
 }
+

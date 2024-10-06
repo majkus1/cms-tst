@@ -33,10 +33,10 @@ const Popup = () => {
 
     // Funkcja do określenia liczby wyświetlanych promocji na podstawie szerokości ekranu
     const updateVisiblePromotions = () => {
-      if (window.innerWidth >= 1024) {
-        setVisiblePromotions(4); // Jeśli okno ma co najmniej 1024px, pokaż 4 promocje
+      if (window.innerWidth >= 1130) {
+        setVisiblePromotions(4); // Jeśli okno ma co najmniej 1130px, pokaż 4 promocje
       } else {
-        setVisiblePromotions(2); // Jeśli okno ma mniej niż 1024px, pokaż 2 promocje
+        setVisiblePromotions(2); // Jeśli okno ma mniej niż 1130px, pokaż 2 promocje
       }
     };
 

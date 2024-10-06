@@ -27,6 +27,14 @@ const Hits = () => {
   const popupPromotions = allPromotions.slice(0, 4) // Pierwsze 4 promocje dla popupa i strony "Hity cenowe"
   const additionalPromotions = allPromotions.slice(4) // Pozostałe promocje, które trafiają tylko na stronę "Hity cenowe"
 
+  const chunkArray = (array, chunkSize) => {
+    const chunks = [];
+    for (let i = 0; i < array.length; i += chunkSize) {
+      chunks.push(array.slice(i, chunkSize + i));
+    }
+    return chunks;
+  };
+
   return (
     <div className="wrapper">
       <Seo
@@ -42,40 +50,50 @@ const Hits = () => {
           Zakup i rezerwacja <a href="tel:+48857474947">tel: 85 74 74 947</a>
         </p>
 
-        {/* Promocje */}
+        {/* Promocje z popupa (maksymalnie 4) */}
         <div className="promo-boxes">
-          <div className="promo-img-boxes">
-            {popupPromotions.map(promo => (
-              <div key={promo.id} className="promo-one">
-                <img
-                  src={promo.image}
-                  className="promo-img"
-                  alt={promo.title}
-                />
-                <p>{promo.title}</p>
-                <p>{promo.price}</p>
+          {chunkArray(popupPromotions, 2).map((row, rowIndex) => (
+            <div key={rowIndex}>
+              <div className="promo-img-boxes">
+                {row.map(promo => (
+                  <div key={promo.id} className="promo-one">
+                    <img
+                      src={promo.image}
+                      className="promo-img"
+                      alt={promo.title}
+                    />
+                    <p>{promo.title}</p>
+                    <p>{promo.price}</p>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+              <hr /> {/* Linia pod każdym rzędem */}
+            </div>
+          ))}
         </div>
 
-        <hr />
+        
 
         {/* Pozostałe promocje */}
         <div className="promo-boxes">
-          <div className="promo-img-boxes">
-            {additionalPromotions.map(promo => (
-              <div key={promo.id} className="promo-one">
-                <img
-                  src={promo.image}
-                  className="promo-img"
-                  alt={promo.title}
-                />
-                <p>{promo.title}</p>
-                <p>{promo.price}</p>
+          {chunkArray(additionalPromotions, 2).map((row, rowIndex) => (
+            <div key={rowIndex}>
+              <div className="promo-img-boxes">
+                {row.map(promo => (
+                  <div key={promo.id} className="promo-one">
+                    <img
+                      src={promo.image}
+                      className="promo-img"
+                      alt={promo.title}
+                    />
+                    <p>{promo.title}</p>
+                    <p>{promo.price}</p>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+              <hr /> {/* Linia pod każdym rzędem */}
+            </div>
+          ))}
         </div>
       </section>
 
